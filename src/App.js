@@ -9,8 +9,8 @@ const {
 } = require('./constants/constants');
 
 class App {
-  #lotto;
-  #myLotto;
+  #winningNumber;
+  #lottos;
   constructor() {}
 
   play() {
@@ -19,20 +19,20 @@ class App {
 
   start(answer) {
     new Validation().myLotto(answer);
-    this.#myLotto = new MyLotto(answer);
-    this.#myLotto.purchase();
-    this.#myLotto.print();
+    this.#lottos = new MyLotto(answer);
+    this.#lottos.purchase();
+    this.#lottos.print();
 
     Console.readLine(WINNING_NUMBER_MESSAGE, (answer) => this.input(answer));
   }
 
   input(answer) {
     const numbers = answer.split(',').map(Number);
-    const myLotto = this.#myLotto.myLotto;
+    const myLotto = this.#lottos.myLotto;
 
     new Validation().lotto(numbers);
-    this.#lotto = new Lotto(numbers);
-    this.#lotto.inputBonus(myLotto);
+    this.#winningNumber = new Lotto(numbers);
+    this.#winningNumber.inputBonus(myLotto);
   }
 }
 
