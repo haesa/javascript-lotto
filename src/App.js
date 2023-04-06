@@ -18,7 +18,7 @@ class App {
   }
 
   start(answer) {
-    new Validation().myLotto(answer);
+    new Validation().lottoPrice(answer);
     this.#lottos = new MyLotto(answer);
     this.#lottos.purchase();
     this.#lottos.print();
@@ -30,7 +30,7 @@ class App {
     const numbers = answer.split(',').map(Number);
     const myLotto = this.#lottos.myLotto;
 
-    new Validation().lotto(numbers);
+    new Validation().winningNumber(numbers);
     this.#winningNumber = new Lotto(numbers);
     this.#winningNumber.inputBonus(myLotto);
   }

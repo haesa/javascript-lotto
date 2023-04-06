@@ -3,7 +3,7 @@ const { LOTTO_ERROR, MY_LOTTO_ERROR } = require('./constants/constants');
 class Validation {
   constructor() {}
 
-  lotto(numbers) {
+  winningNumber(numbers) {
     if (numbers.length !== 6) {
       throw new Error(LOTTO_ERROR.LENGTH);
     }
@@ -24,7 +24,8 @@ class Validation {
       throw new Error(LOTTO_ERROR.DOMAIN);
     }
   }
-  myLotto(purchasePrice) {
+
+  lottoPrice(purchasePrice) {
     if (/[^0-9]/.test(purchasePrice)) {
       throw new Error(MY_LOTTO_ERROR.NUMBER);
     }
