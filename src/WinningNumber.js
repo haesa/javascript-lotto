@@ -8,7 +8,7 @@ const {
   LOTTO_PRICE,
 } = require('./constants/constants');
 
-class Lotto {
+class WinningNumber {
   #numbers;
   constructor(numbers) {
     this.#numbers = numbers;
@@ -88,4 +88,4 @@ class Lotto {
   }
 }
 
-module.exports = Lotto;
+module.exports = WinningNumber;

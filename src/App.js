@@ -1,5 +1,5 @@
 const { Console } = require('@woowacourse/mission-utils');
-const Lotto = require('./Lotto');
+const WinningNumber = require('./WinningNumber');
 const MyLotto = require('./MyLotto');
 const Validation = require('./Validation');
 
@@ -31,7 +31,7 @@ class App {
     const myLotto = this.#lottos.myLotto;
 
     new Validation().winningNumber(numbers);
-    this.#winningNumber = new Lotto(numbers);
+    this.#winningNumber = new WinningNumber(numbers);
     this.#winningNumber.inputBonus(myLotto);
   }
 }
