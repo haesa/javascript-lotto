@@ -1,6 +1,6 @@
 const { LOTTO_ERROR, MY_LOTTO_ERROR } = require('./constants/constants');
 
-class Validate {
+class Validation {
   constructor() {}
 
   lotto(numbers) {
@@ -34,4 +34,4 @@ class Validate {
     }
   }
 }
-module.exports = Validate;
+module.exports = Validation;

@@ -1,9 +1,9 @@
 const { Random, Console } = require('@woowacourse/mission-utils');
-const Validate = require('./Validate');
+const Validation = require('./Validation');
 
 class MyLotto {
   constructor(purchasePrice) {
-    new Validate().myLotto(purchasePrice);
+    new Validation().myLotto(purchasePrice);
     this.amount = Number(purchasePrice) / 1000;
     this.myLotto = [];
   }
