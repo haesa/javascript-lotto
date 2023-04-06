@@ -1,6 +1,8 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Lotto = require('./Lotto');
 const MyLotto = require('./MyLotto');
+const Validation = require('./Validation');
+
 const {
   PURCHASE_PRICE_MESSAGE,
   WINNING_NUMBER_MESSAGE,
@@ -27,6 +29,7 @@ class App {
     const numbers = answer.split(',').map(Number);
     const myLotto = this.#myLotto.myLotto;
 
+    new Validation().lotto(numbers);
     this.#lotto = new Lotto(numbers);
     this.#lotto.inputBonus(myLotto);
   }

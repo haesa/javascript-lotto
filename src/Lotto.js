@@ -1,6 +1,5 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Bonus = require('./Bonus');
-const Validation = require('./Validation');
 const {
   BONUS_NUMBER_MESSAGE,
   STATISTICS,
@@ -12,7 +11,6 @@ const {
 class Lotto {
   #numbers;
   constructor(numbers) {
-    new Validation().lotto(numbers);
     this.#numbers = numbers;
   }
 
