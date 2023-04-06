@@ -18,6 +18,7 @@ class App {
   }
 
   start(answer) {
+    new Validation().myLotto(answer);
     this.#myLotto = new MyLotto(answer);
     this.#myLotto.purchase();
     this.#myLotto.print();
