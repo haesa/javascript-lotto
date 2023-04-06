@@ -1,7 +1,7 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Bonus = require('./Bonus');
+const Validate = require('./Validate');
 const {
-  LOTTO_ERROR,
   BONUS_NUMBER_MESSAGE,
   STATISTICS,
   LOTTO_RESULT,
@@ -11,9 +11,8 @@ const {
 
 class Lotto {
   #numbers;
-
   constructor(numbers) {
-    this.validate(numbers);
+    new Validate().lotto(numbers);
     this.#numbers = numbers;
   }
 
@@ -88,28 +87,6 @@ class Lotto {
     const roundRate = Math.round((rate + Number.EPSILON) * 100) / 100;
 
     Console.print(`총 수익률은 ${roundRate}%입니다.`);
-  }
-
-  validate(numbers) {
-    if (numbers.length !== 6) {
-      throw new Error(LOTTO_ERROR.LENGTH);
-    }
-
-    if (numbers.some((number) => /[^0-9]/.test(number))) {
-      throw new Error(LOTTO_ERROR.NUMBER);
-    }
-
-    if (
-      numbers.some(
-        (number) => numbers.indexOf(number) !== numbers.lastIndexOf(number)
-      )
-    ) {
-      throw new Error(LOTTO_ERROR.DUPLICATION);
-    }
-
-    if (numbers.some((number) => !(number >= 1 && number <= 45))) {
-      throw new Error(LOTTO_ERROR.DOMAIN);
-    }
   }
 }
 

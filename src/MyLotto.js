@@ -1,21 +1,11 @@
 const { Random, Console } = require('@woowacourse/mission-utils');
-const { MY_LOTTO_ERROR } = require('./constants/constants');
+const Validate = require('./Validate');
 
 class MyLotto {
   constructor(purchasePrice) {
-    this.validate(purchasePrice);
+    new Validate().myLotto(purchasePrice);
     this.amount = Number(purchasePrice) / 1000;
     this.myLotto = [];
-  }
-
-  validate(purchasePrice) {
-    if (/[^0-9]/.test(purchasePrice)) {
-      throw new Error(MY_LOTTO_ERROR.NUMBER);
-    }
-
-    if (Number(purchasePrice) % 1000 !== 0) {
-      throw new Error(MY_LOTTO_ERROR.UNIT);
-    }
   }
 
   purchase() {
