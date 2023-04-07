@@ -6,21 +6,44 @@ const { WINNING_AMOUNT, LOTTO_PRICE } = require('./constants/constants');
 class Judgement {
   #winningNumber;
   #bonusNumber;
+  #prize;
   constructor(winningNumber, bonusNumber) {
     this.#winningNumber = winningNumber;
     this.#bonusNumber = bonusNumber;
+    this.#prize = {
+      first: 0,
+      second: 0,
+      third: 0,
+      fourth: 0,
+      fifth: 0,
+    };
   }
 
   result(myLotto) {
-    const counts = myLotto.map((lotto) => [
-      lotto.number,
-      this.match(lotto.number),
-    ]);
-    const prize = this.count(counts);
+    myLotto.forEach((lotto) => this.count(lotto));
 
-    Print.result(prize);
+    Print.result(this.#prize);
 
-    this.rateOfReturn(myLotto.length * LOTTO_PRICE, prize);
+    this.rateOfReturn(myLotto.length * LOTTO_PRICE);
+  }
+
+  count(lotto) {
+    switch (this.match(lotto.number)) {
+      case 6:
+        this.#prize = { ...this.#prize, first: this.#prize.first + 1 };
+        break;
+      case 5:
+        this.#prize = lotto.number.includes(this.#bonusNumber)
+          ? { ...this.#prize, second: this.#prize.second + 1 }
+          : { ...this.#prize, third: this.#prize.third + 1 };
+        break;
+      case 4:
+        this.#prize = { ...this.#prize, fourth: this.#prize.fourth + 1 };
+        break;
+      case 3:
+        this.#prize = { ...this.#prize, fifth: this.#prize.fifth + 1 };
+        break;
+    }
   }
 
   match(numbers) {
@@ -30,38 +53,8 @@ class Judgement {
     );
   }
 
-  count(counts) {
-    const prize = {
-      first: 0,
-      second: 0,
-      third: 0,
-      fourth: 0,
-      fifth: 0,
-    };
-
-    counts.forEach(([numbers, count]) => {
-      switch (count) {
-        case 6:
-          prize.first += 1;
-          break;
-        case 5:
-          numbers.includes(this.#bonusNumber)
-            ? (prize.second += 1)
-            : (prize.third += 1);
-          break;
-        case 4:
-          prize.fourth += 1;
-          break;
-        case 3:
-          prize.fifth += 1;
-          break;
-      }
-    });
-
-    return prize;
-  }
-
-  rateOfReturn(purchasePrice, { first, second, third, fourth, fifth }) {
+  rateOfReturn(purchasePrice) {
+    const { first, second, third, fourth, fifth } = this.#prize;
     const profit =
       first * WINNING_AMOUNT.FIRST +
       second * WINNING_AMOUNT.SECOND +
