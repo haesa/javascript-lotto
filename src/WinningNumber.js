@@ -1,6 +1,6 @@
 const { Console } = require('@woowacourse/mission-utils');
-const Bonus = require('./Bonus');
 const Print = require('./Print');
+const Validation = require('./Validation');
 const {
   BONUS_NUMBER_MESSAGE,
   WINNING_AMOUNT,
@@ -15,9 +15,8 @@ class WinningNumber {
 
   inputBonus(myLotto) {
     Console.readLine(BONUS_NUMBER_MESSAGE, (answer) => {
-      const bonus = new Bonus(answer, this.#numbers);
-
-      this.result(myLotto, bonus.number);
+      Validation.bonus(answer, this.#numbers);
+      this.result(myLotto, answer);
       Console.close();
     });
   }
