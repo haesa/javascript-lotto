@@ -1,4 +1,5 @@
 const { Random } = require('@woowacourse/mission-utils');
+const Lotto = require('./Lotto');
 
 class MyLotto {
   #amount;
@@ -20,14 +21,10 @@ class MyLotto {
     const lottos = [];
 
     for (let i = 0; i < this.#amount; i++) {
-      lottos.push(this.create());
+      lottos.push(new Lotto());
     }
 
     return lottos;
-  }
-
-  create() {
-    return Random.pickUniqueNumbersInRange(1, 45, 6);
   }
 }
 

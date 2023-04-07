@@ -24,7 +24,10 @@ class WinningNumber {
   }
 
   result(myLotto, bonus) {
-    const counts = myLotto.map((numbers) => [numbers, this.match(numbers)]);
+    const counts = myLotto.map((lotto) => [
+      lotto.number,
+      this.match(lotto.number),
+    ]);
     const prize = this.count(counts, bonus);
 
     Console.print(STATISTICS);
