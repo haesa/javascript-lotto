@@ -19,11 +19,20 @@ class Judgement {
     };
   }
 
+  get profit() {
+    const { first, second, third, fourth, fifth } = this.#prize;
+    return (
+      first * WINNING_AMOUNT.FIRST +
+      second * WINNING_AMOUNT.SECOND +
+      third * WINNING_AMOUNT.THIRD +
+      fourth * WINNING_AMOUNT.FOURTH +
+      fifth * WINNING_AMOUNT.FIFTH
+    );
+  }
+
   result(myLotto) {
     myLotto.forEach((lotto) => this.calculatePrize(lotto));
-
     Print.result(this.#prize);
-
     this.earningsRate(myLotto.length * LOTTO_PRICE);
   }
 
@@ -54,16 +63,8 @@ class Judgement {
   }
 
   earningsRate(purchasePrice) {
-    const { first, second, third, fourth, fifth } = this.#prize;
-    const profit =
-      first * WINNING_AMOUNT.FIRST +
-      second * WINNING_AMOUNT.SECOND +
-      third * WINNING_AMOUNT.THIRD +
-      fourth * WINNING_AMOUNT.FOURTH +
-      fifth * WINNING_AMOUNT.FIFTH;
-    const rate = (profit / purchasePrice) * 100;
+    const rate = (this.profit / purchasePrice) * 100;
     const roundRate = Math.round((rate + Number.EPSILON) * 100) / 100;
-
     Print.earningsRate(roundRate);
   }
 }
