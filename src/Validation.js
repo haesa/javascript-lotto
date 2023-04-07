@@ -1,4 +1,8 @@
-const { LOTTO_ERROR, MY_LOTTO_ERROR } = require('./constants/constants');
+const {
+  BONUS_ERROR,
+  LOTTO_ERROR,
+  MY_LOTTO_ERROR,
+} = require('./constants/constants');
 
 class Validation {
   constructor() {}
@@ -32,6 +36,20 @@ class Validation {
 
     if (Number(purchasePrice) % 1000 !== 0) {
       throw new Error(MY_LOTTO_ERROR.UNIT);
+    }
+  }
+
+  static bonus(bonus, numbers) {
+    if (/[^0-9]/.test(bonus)) {
+      throw new Error(BONUS_ERROR.NUMBER);
+    }
+
+    if (!(bonus >= 1 && bonus <= 45)) {
+      throw new Error(BONUS_ERROR.DOMAIN);
+    }
+
+    if (numbers.includes(bonus)) {
+      throw new Error(BONUS_ERROR.DUPLICATION);
     }
   }
 }
