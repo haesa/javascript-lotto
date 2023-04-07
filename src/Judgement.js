@@ -8,14 +8,14 @@ const {
 } = require('./constants/constants');
 
 class Judgement {
-  #numbers;
-  constructor(numbers) {
-    this.#numbers = numbers;
+  #winningNumber;
+  constructor(winningNumber) {
+    this.#winningNumber = winningNumber;
   }
 
   inputBonus(myLotto) {
     Console.readLine(BONUS_NUMBER_MESSAGE, (answer) => {
-      Validation.bonus(answer, this.#numbers);
+      Validation.bonus(answer, this.#winningNumber);
       this.result(myLotto, answer);
       Console.close();
     });
@@ -35,7 +35,7 @@ class Judgement {
 
   match(numbers) {
     return numbers.reduce(
-      (acc, number) => (this.#numbers.includes(number) ? acc + 1 : acc),
+      (acc, number) => (this.#winningNumber.includes(number) ? acc + 1 : acc),
       0
     );
   }
