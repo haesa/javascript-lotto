@@ -18,13 +18,9 @@ class MyLotto {
   }
 
   purchase() {
-    const lottos = [];
-
-    for (let i = 0; i < this.#amount; i++) {
-      lottos.push(new Lotto());
-    }
-
-    return lottos;
+    return new Array(this.#amount) //
+      .fill(0)
+      .map(() => new Lotto());
   }
 }
 
