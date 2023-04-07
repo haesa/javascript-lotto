@@ -21,7 +21,6 @@ class App {
   start(answer) {
     new Validation().lottoPrice(answer);
     this.#lottos = new MyLotto(answer);
-    this.#lottos.purchase();
     print(this.#lottos);
 
     Console.readLine(WINNING_NUMBER_MESSAGE, (answer) => this.input(answer));

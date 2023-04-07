@@ -5,7 +5,7 @@ class MyLotto {
   #myLotto;
   constructor(purchasePrice) {
     this.#amount = Number(purchasePrice) / 1000;
-    this.#myLotto = [];
+    this.#myLotto = this.purchase();
   }
 
   get amount() {
@@ -23,7 +23,7 @@ class MyLotto {
       lottos.push(this.create());
     }
 
-    this.#myLotto = lottos;
+    return lottos;
   }
 
   create() {
