@@ -11,12 +11,12 @@ class Judgement {
     this.#bonusNumber = bonusNumber;
   }
 
-  result(myLotto, bonus) {
+  result(myLotto) {
     const counts = myLotto.map((lotto) => [
       lotto.number,
       this.match(lotto.number),
     ]);
-    const prize = this.count(counts, bonus);
+    const prize = this.count(counts, this.#bonusNumber);
 
     Print.result(prize);
 

@@ -40,7 +40,7 @@ class App {
   bonusNumber(bonusNumber) {
     Validation.bonus(bonusNumber, this.#winningNumber);
     const judgement = new Judgement(this.#winningNumber, bonusNumber);
-    judgement.result(this.#lottos.myLotto, bonusNumber);
+    judgement.result(this.#lottos.myLotto);
     Console.close();
   }
 }
