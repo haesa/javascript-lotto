@@ -1,6 +1,5 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Print = require('./Print');
-const Validation = require('./Validation');
 const { WINNING_AMOUNT, LOTTO_PRICE } = require('./constants/constants');
 
 class Judgement {
