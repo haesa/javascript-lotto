@@ -24,7 +24,7 @@ class Judgement {
 
     Print.result(this.#prize);
 
-    this.rateOfReturn(myLotto.length * LOTTO_PRICE);
+    this.earningsRate(myLotto.length * LOTTO_PRICE);
   }
 
   calculatePrize(lotto) {
@@ -53,7 +53,7 @@ class Judgement {
     );
   }
 
-  rateOfReturn(purchasePrice) {
+  earningsRate(purchasePrice) {
     const { first, second, third, fourth, fifth } = this.#prize;
     const profit =
       first * WINNING_AMOUNT.FIRST +
