@@ -2,9 +2,14 @@ const { Random, Console } = require('@woowacourse/mission-utils');
 
 class MyLotto {
   #amount;
+  #myLotto;
   constructor(purchasePrice) {
     this.#amount = Number(purchasePrice) / 1000;
-    this.myLotto = [];
+    this.#myLotto = [];
+  }
+
+  get myLotto() {
+    return this.#myLotto;
   }
 
   purchase() {
@@ -14,7 +19,7 @@ class MyLotto {
       lottos.push(this.create());
     }
 
-    this.myLotto = lottos;
+    this.#myLotto = lottos;
   }
 
   create() {
@@ -24,11 +29,11 @@ class MyLotto {
   print() {
     Console.print(`\n${this.#amount}개를 구매했습니다.`);
     this.sort();
-    this.myLotto.forEach((lotto) => Console.print(`[${lotto.join(', ')}]`));
+    this.#myLotto.forEach((lotto) => Console.print(`[${lotto.join(', ')}]`));
   }
 
   sort() {
-    this.myLotto.forEach((numbers) => numbers.sort((a, b) => a - b));
+    this.#myLotto.forEach((numbers) => numbers.sort((a, b) => a - b));
   }
 }
 
