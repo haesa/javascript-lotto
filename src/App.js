@@ -2,8 +2,7 @@ const { Console } = require('@woowacourse/mission-utils');
 const WinningNumber = require('./WinningNumber');
 const MyLotto = require('./MyLotto');
 const Validation = require('./Validation');
-const print = require('./Print');
-
+const Print = require('./Print');
 const {
   PURCHASE_PRICE_MESSAGE,
   WINNING_NUMBER_MESSAGE,
@@ -21,7 +20,7 @@ class App {
   start(answer) {
     new Validation().lottoPrice(answer);
     this.#lottos = new MyLotto(answer);
-    print(this.#lottos);
+    Print.purchase(this.#lottos);
 
     Console.readLine(WINNING_NUMBER_MESSAGE, (answer) => this.input(answer));
   }

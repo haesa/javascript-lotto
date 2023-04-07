@@ -1,9 +1,8 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Bonus = require('./Bonus');
+const Print = require('./Print');
 const {
   BONUS_NUMBER_MESSAGE,
-  STATISTICS,
-  LOTTO_RESULT,
   WINNING_AMOUNT,
   LOTTO_PRICE,
 } = require('./constants/constants');
@@ -30,13 +29,7 @@ class WinningNumber {
     ]);
     const prize = this.count(counts, bonus);
 
-    Console.print(STATISTICS);
-
-    Console.print(`${LOTTO_RESULT.THREE}${prize.fifth}개`);
-    Console.print(`${LOTTO_RESULT.FOUR}${prize.fourth}개`);
-    Console.print(`${LOTTO_RESULT.FIVE}${prize.third}개`);
-    Console.print(`${LOTTO_RESULT.FIVE_BONUS}${prize.second}개`);
-    Console.print(`${LOTTO_RESULT.SIX}${prize.first}개`);
+    Print.result(prize);
 
     this.rateOfReturn(myLotto.length * LOTTO_PRICE, prize);
   }
@@ -87,7 +80,7 @@ class WinningNumber {
     const rate = (profit / purchasePrice) * 100;
     const roundRate = Math.round((rate + Number.EPSILON) * 100) / 100;
 
-    Console.print(`총 수익률은 ${roundRate}%입니다.`);
+    Print.rateOfReturn(roundRate);
   }
 }
 
