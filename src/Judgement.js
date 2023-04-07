@@ -20,14 +20,14 @@ class Judgement {
   }
 
   result(myLotto) {
-    myLotto.forEach((lotto) => this.count(lotto));
+    myLotto.forEach((lotto) => this.calculatePrize(lotto));
 
     Print.result(this.#prize);
 
     this.rateOfReturn(myLotto.length * LOTTO_PRICE);
   }
 
-  count(lotto) {
+  calculatePrize(lotto) {
     switch (this.match(lotto.number)) {
       case 6:
         this.#prize = { ...this.#prize, first: this.#prize.first + 1 };
