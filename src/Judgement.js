@@ -16,7 +16,7 @@ class Judgement {
       lotto.number,
       this.match(lotto.number),
     ]);
-    const prize = this.count(counts, this.#bonusNumber);
+    const prize = this.count(counts);
 
     Print.result(prize);
 
@@ -30,7 +30,7 @@ class Judgement {
     );
   }
 
-  count(counts, bonus) {
+  count(counts) {
     const prize = {
       first: 0,
       second: 0,
@@ -45,7 +45,9 @@ class Judgement {
           prize.first += 1;
           break;
         case 5:
-          numbers.includes(bonus) ? (prize.second += 1) : (prize.third += 1);
+          numbers.includes(this.#bonusNumber)
+            ? (prize.second += 1)
+            : (prize.third += 1);
           break;
         case 4:
           prize.fourth += 1;
