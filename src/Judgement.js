@@ -64,7 +64,7 @@ class Judgement {
     const rate = (profit / purchasePrice) * 100;
     const roundRate = Math.round((rate + Number.EPSILON) * 100) / 100;
 
-    Print.rateOfReturn(roundRate);
+    Print.earningsRate(roundRate);
   }
 }
 

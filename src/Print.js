@@ -22,7 +22,7 @@ class Print {
     Console.print(`${LOTTO_RESULT.SIX}${prize.first}개`);
   }
 
-  static rateOfReturn(rate) {
+  static earningsRate(rate) {
     Console.print(`총 수익률은 ${rate}%입니다.`);
   }
 }
