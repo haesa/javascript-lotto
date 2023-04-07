@@ -1,8 +1,11 @@
-const PURCHASE_PRICE_MESSAGE = '구입금액을 입력해 주세요.\n';
-const PURCHASE_MESSAGE = `개를 구매했습니다.`;
 const WINNING_NUMBER_MESSAGE = '\n당첨 번호를 입력해 주세요.\n';
 const BONUS_NUMBER_MESSAGE = '\n보너스 번호를 입력해 주세요.\n';
 const STATISTICS = '\n당첨 통계\n---';
+
+const PURCHASE = Object.freeze({
+  PRICE_MESSAGE: '구입금액을 입력해 주세요.\n',
+  MESSAGE: (amount) => `\n${amount}개를 구매했습니다.`,
+});
 
 const LOTTO_RESULT = Object.freeze({
   THREE: `3개 일치 (5,000원) - `,
@@ -41,8 +44,7 @@ const BONUS_ERROR = Object.freeze({
 });
 
 module.exports = {
-  PURCHASE_PRICE_MESSAGE,
-  PURCHASE_MESSAGE,
+  PURCHASE,
   WINNING_NUMBER_MESSAGE,
   BONUS_NUMBER_MESSAGE,
   STATISTICS,

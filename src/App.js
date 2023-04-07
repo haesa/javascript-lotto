@@ -5,7 +5,7 @@ const Validation = require('./Validation');
 const Print = require('./Print');
 const {
   BONUS_NUMBER_MESSAGE,
-  PURCHASE_PRICE_MESSAGE,
+  PURCHASE,
   WINNING_NUMBER_MESSAGE,
 } = require('./constants/constants');
 
@@ -15,7 +15,7 @@ class App {
   constructor() {}
 
   play() {
-    Console.readLine(PURCHASE_PRICE_MESSAGE, (answer) => this.start(answer));
+    Console.readLine(PURCHASE.PRICE_MESSAGE, (answer) => this.start(answer));
   }
 
   start(answer) {

@@ -1,11 +1,11 @@
 const { Console } = require('@woowacourse/mission-utils');
-const { STATISTICS, LOTTO_RESULT } = require('./constants/constants');
+const { LOTTO_RESULT, PURCHASE, STATISTICS } = require('./constants/constants');
 
 class Print {
   constructor() {}
 
   static purchase(lottos) {
-    Console.print(`\n${lottos.amount}개를 구매했습니다.`);
+    Console.print(PURCHASE.MESSAGE(lottos.amount));
 
     lottos.myLotto.forEach((lotto) => lotto.number.sort((a, b) => a - b));
     lottos.myLotto.forEach((lotto) =>
