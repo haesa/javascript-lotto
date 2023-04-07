@@ -1,24 +1,14 @@
 const { Console } = require('@woowacourse/mission-utils');
 const Print = require('./Print');
 const Validation = require('./Validation');
-const {
-  BONUS_NUMBER_MESSAGE,
-  WINNING_AMOUNT,
-  LOTTO_PRICE,
-} = require('./constants/constants');
+const { WINNING_AMOUNT, LOTTO_PRICE } = require('./constants/constants');
 
 class Judgement {
   #winningNumber;
-  constructor(winningNumber) {
+  #bonusNumber;
+  constructor(winningNumber, bonusNumber) {
     this.#winningNumber = winningNumber;
-  }
-
-  inputBonus(myLotto) {
-    Console.readLine(BONUS_NUMBER_MESSAGE, (answer) => {
-      Validation.bonus(answer, this.#winningNumber);
-      this.result(myLotto, answer);
-      Console.close();
-    });
+    this.#bonusNumber = bonusNumber;
   }
 
   result(myLotto, bonus) {

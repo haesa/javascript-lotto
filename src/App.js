@@ -4,13 +4,14 @@ const MyLotto = require('./MyLotto');
 const Validation = require('./Validation');
 const Print = require('./Print');
 const {
+  BONUS_NUMBER_MESSAGE,
   PURCHASE_PRICE_MESSAGE,
   WINNING_NUMBER_MESSAGE,
 } = require('./constants/constants');
 
 class App {
-  #winningNumber;
   #lottos;
+  #winningNumber;
   constructor() {}
 
   play() {
@@ -28,12 +29,19 @@ class App {
   }
 
   winningNumber(answer) {
-    const winningNumber = answer.split(',').map(Number);
-    const myLotto = this.#lottos.myLotto;
+    this.#winningNumber = answer.split(',').map(Number);
+    Validation.winningNumber(this.#winningNumber);
 
-    Validation.winningNumber(winningNumber);
-    this.#winningNumber = new Judgement(winningNumber);
-    this.#winningNumber.inputBonus(myLotto);
+    Console.readLine(BONUS_NUMBER_MESSAGE, (answer) =>
+      this.bonusNumber(answer)
+    );
+  }
+
+  bonusNumber(bonusNumber) {
+    Validation.bonus(bonusNumber, this.#winningNumber);
+    const judgement = new Judgement(this.#winningNumber, bonusNumber);
+    judgement.result(this.#lottos.myLotto, bonusNumber);
+    Console.close();
   }
 }
 
