@@ -1,4 +1,4 @@
-const { Random, Console } = require('@woowacourse/mission-utils');
+const { Random } = require('@woowacourse/mission-utils');
 
 class MyLotto {
   #amount;
@@ -6,6 +6,10 @@ class MyLotto {
   constructor(purchasePrice) {
     this.#amount = Number(purchasePrice) / 1000;
     this.#myLotto = [];
+  }
+
+  get amount() {
+    return this.#amount;
   }
 
   get myLotto() {
@@ -24,16 +28,6 @@ class MyLotto {
 
   create() {
     return Random.pickUniqueNumbersInRange(1, 45, 6);
-  }
-
-  print() {
-    Console.print(`\n${this.#amount}개를 구매했습니다.`);
-    this.sort();
-    this.#myLotto.forEach((lotto) => Console.print(`[${lotto.join(', ')}]`));
-  }
-
-  sort() {
-    this.#myLotto.forEach((numbers) => numbers.sort((a, b) => a - b));
   }
 }
 
