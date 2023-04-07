@@ -1,4 +1,4 @@
-const Validation = require('../src/Validation');
+const Validation = require('../src/components/Validation');
 
 describe('로또 당첨 번호 예외 테스트', () => {
   test('로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.', () => {

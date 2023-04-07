@@ -1,4 +1,4 @@
-const MyLotto = require('../src/MyLotto');
+const MyLotto = require('../src/components/MyLotto');
 
 describe('로또 발행 테스트', () => {
   test('로또 발행 개수가 정확한지 확인한다.', () => {

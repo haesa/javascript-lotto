@@ -7,7 +7,7 @@ const {
   BONUS_NUMBER_MESSAGE,
   PURCHASE,
   WINNING_NUMBER_MESSAGE,
-} = require('./constants/constants');
+} = require('../constants/constants');
 
 class App {
   #lottos;

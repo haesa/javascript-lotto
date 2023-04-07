@@ -2,7 +2,7 @@ const {
   BONUS_ERROR,
   LOTTO_ERROR,
   MY_LOTTO_ERROR,
-} = require('./constants/constants');
+} = require('../constants/constants');
 
 class Validation {
   constructor() {}

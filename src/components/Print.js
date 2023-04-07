@@ -1,5 +1,9 @@
 const { Console } = require('@woowacourse/mission-utils');
-const { LOTTO_RESULT, PURCHASE, STATISTICS } = require('./constants/constants');
+const {
+  LOTTO_RESULT,
+  PURCHASE,
+  STATISTICS,
+} = require('../constants/constants');
 
 class Print {
   constructor() {}
