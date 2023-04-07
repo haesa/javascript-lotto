@@ -26,11 +26,11 @@ class App {
   }
 
   input(answer) {
-    const numbers = answer.split(',').map(Number);
+    const winningNumber = answer.split(',').map(Number);
     const myLotto = this.#lottos.myLotto;
 
-    Validation.winningNumber(numbers);
-    this.#winningNumber = new WinningNumber(numbers);
+    Validation.winningNumber(winningNumber);
+    this.#winningNumber = new WinningNumber(winningNumber);
     this.#winningNumber.inputBonus(myLotto);
   }
 }
