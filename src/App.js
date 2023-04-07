@@ -22,10 +22,12 @@ class App {
     this.#lottos = new MyLotto(answer);
     Print.purchase(this.#lottos);
 
-    Console.readLine(WINNING_NUMBER_MESSAGE, (answer) => this.input(answer));
+    Console.readLine(WINNING_NUMBER_MESSAGE, (answer) =>
+      this.winningNumber(answer)
+    );
   }
 
-  input(answer) {
+  winningNumber(answer) {
     const winningNumber = answer.split(',').map(Number);
     const myLotto = this.#lottos.myLotto;
 
